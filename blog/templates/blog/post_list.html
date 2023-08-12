@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>سهراب</title>
-    </head>
-    <body>
-        <header>
-                <h1><a href="/">وبلاگ سهراب</a></h1>
-            </header>
+{% extends 'blog/base.html' %}
+{% block content %}
             {% for post in posts %}
-            <article>
-        
-            <time>
-                {{posts.published_date}}
-            </time><br>
-            <time>
-                {{posts.created_date}}
-            </time>
-            <h2><a href="">{{posts.title}}</a></h2>
-            <p>{{post.text}}</p>
-    
-        <hr>
-    </article>
-    {% endfor %}
-
+            <article class="post">
+                <time class="date">
+                    {{post.published_date}}
+                </time><br>    
+                
             
-
-    </body>
-</html>
+                <h2><a></a> href="{% url 'post_detail' pk=post.pk %}"{{posts.title}}</a></h2>
+                <p>{{post.text|linebreaksbr}}</p>
+    
+            <hr>
+        </article>
+    {% endfor %}
+{% endblock %}
